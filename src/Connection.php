@@ -1,6 +1,6 @@
 <?php
 
-namespace ultraman\softdelete;
+namespace wxg\softdelete;
 
 use think\db\Connection AS TPConnection;
 
