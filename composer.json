@@ -1,18 +1,18 @@
 {
-    "name": "ultraman/softdelete",
+    "name": "wxg/softdelete",
     "description": "thinkphp5 soft delete",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "ultraman",
+            "name": "wxg",
             "email": "772848039@qq.com"
         }
     ],
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "ultraman\\softdelete": "src/"
+            "wxg\\softdelete": "src/"
         }
     }
 }
