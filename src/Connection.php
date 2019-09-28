@@ -2,11 +2,14 @@
 
 namespace wxg\softdelete;
 
-use think\db\Connection AS TPConnection;
+use think\db\builder\Connection as TPConnection;
 
-//软删除查询对象
-class Connection Extends TPConnection
+//软删除数据库查询对象
+abstract class Connection extends TPConnection
 {
+    //tp框架Connection子类实例
+    protected $tpConnection;
+
     // 数据库连接参数配置
     protected $config = [
         // 数据库类型
@@ -54,8 +57,21 @@ class Connection Extends TPConnection
         // Builder类
         'builder'         => '',
         // Query类
-        'query'           => '\\ultraman\\softdelete\\Query',
+        'query'           => '\\wxg\\softdelete\\Query',
         // 是否需要断线重连
         'break_reconnect' => false,
     ];
+
+    /**
+     * 调用tp框架Connection子类类的连接方法
+     * @access public
+     * @param string    $method 方法名称
+     * @param array     $args 调用参数
+     * @return mixed
+     */
+    public function __call($method, $args)
+    {
+        $callObj = method_exists($this->tpConnection, $method) ? $this->tpConnection : $this->getQuery();
+        return call_user_func_array([$callObj, $method], $args);
+    }
 }
