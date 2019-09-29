@@ -1,6 +1,6 @@
 {
     "name": "wxg/softdelete",
-    "description": "thinkphp5 soft delete",
+    "description": "thinkphp5.0.14软删除",
     "type": "library",
     "license": "MIT",
     "authors": [
