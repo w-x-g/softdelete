@@ -1,5 +1,7 @@
 <?php
 
+namespace wxg\softdelete;
+
 use think\db\Query as TPQuery;
 
 //软删除查询对象
