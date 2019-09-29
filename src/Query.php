@@ -29,7 +29,7 @@ class Query extends TPQuery
             $result = Cache::get($key);
         }
         if (false === $result) {
-            if ($s === null) {
+            if ($softdelete === null) {
                 $this->options = $this->changeOptions($this->options);
             }
             $pdo = $this->field($field)->limit(1)->getPdo();
@@ -76,7 +76,7 @@ class Query extends TPQuery
             $result = Cache::get($guid);
         }
         if (false === $result) {
-            if ($s === null) {
+            if ($softdelete === null) {
                 $this->options = $this->changeOptions($this->options);
             }
             if (is_null($field)) {
@@ -141,10 +141,10 @@ class Query extends TPQuery
             // 支持GROUP
             $options = $this->getOptions();
             $subSql  = $this->options($options)->field('count(' . $field . ')')->bind($this->bind)->buildSql();
-            return $this->table([$subSql => '_group_count_'])->value('COUNT(*) AS tp_count', 0, true, $s);
+            return $this->table([$subSql => '_group_count_'])->value('COUNT(*) AS tp_count', 0, true, $softdelete);
         }
 
-        return $this->value('COUNT(' . $field . ') AS tp_count', 0, true, $s);
+        return $this->value('COUNT(' . $field . ') AS tp_count', 0, true, $softdelete);
     }
 
     /**
@@ -156,7 +156,7 @@ class Query extends TPQuery
      */
     public function sum($field, $softdelete = null)
     {
-        return $this->value('SUM(' . $field . ') AS tp_sum', 0, true, $s);
+        return $this->value('SUM(' . $field . ') AS tp_sum', 0, true, $softdelete);
     }
 
     /**
@@ -169,7 +169,7 @@ class Query extends TPQuery
      */
     public function min($field, $force = true, $softdelete = null)
     {
-        return $this->value('MIN(' . $field . ') AS tp_min', 0, $force, $s);
+        return $this->value('MIN(' . $field . ') AS tp_min', 0, $force, $softdelete);
     }
 
     /**
@@ -182,7 +182,7 @@ class Query extends TPQuery
      */
     public function max($field, $force = true, $softdelete = null)
     {
-        return $this->value('MAX(' . $field . ') AS tp_max', 0, $force, $s);
+        return $this->value('MAX(' . $field . ') AS tp_max', 0, $force, $softdelete);
     }
 
     /**
@@ -194,7 +194,7 @@ class Query extends TPQuery
      */
     public function avg($field, $softdelete = null)
     {
-        return $this->value('AVG(' . $field . ') AS tp_avg', 0, true, $s);
+        return $this->value('AVG(' . $field . ') AS tp_avg', 0, true, $softdelete);
     }
 
     /**

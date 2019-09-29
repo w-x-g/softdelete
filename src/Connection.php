@@ -2,7 +2,7 @@
 
 namespace wxg\softdelete;
 
-use think\db\builder\Connection as TPConnection;
+use think\db\Connection as TPConnection;
 
 //软删除数据库查询对象
 abstract class Connection extends TPConnection
