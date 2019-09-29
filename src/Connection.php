@@ -1,7 +1,8 @@
 <?php
-
 namespace wxg\softdelete;
 
+use PDO;
+use PDOStatement;
 use think\db\Connection as TPConnection;
 
 //软删除数据库查询对象

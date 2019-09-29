@@ -1,5 +1,4 @@
 <?php
-
 namespace wxg\softdelete\connector;
 
 use PDO;
