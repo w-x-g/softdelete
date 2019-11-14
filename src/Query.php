@@ -1,7 +1,6 @@
 <?php
 namespace wxg\softdelete;
 
-
 use PDO;
 use think\db\Query as TPQuery;
 
